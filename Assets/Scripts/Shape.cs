@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Shape : MonoBehaviour
 {
@@ -36,8 +37,8 @@ public class Shape : MonoBehaviour
 
     public void GoToWinScene()
     {
-        gameController.UpdateGameScore();
-        gameController.UpdateRecord();
+        gameController.UpdateGameScore(); 
+        gameController.UpdateRecord();    
         gameController.LoadWinScene();
     }
 

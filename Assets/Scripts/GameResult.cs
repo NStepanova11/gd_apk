@@ -11,7 +11,6 @@ public class GameResult : MonoBehaviour
 
     void Start()
     {
-       // Debug.Log("record: "+gameController.GetRecord());
         recText.text = gameController.GetRecord().ToString();
         scoreText.text = gameController.GetGameScore().ToString();
     }

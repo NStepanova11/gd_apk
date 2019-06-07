@@ -14,10 +14,10 @@ public class LevelCanvas_1 : MonoBehaviour
 
 	public GameController gameController;
 	public GameObject levelObject;
-	private string levelPurpose;// = "Найти 1  из 5 фигур одного размера";
 	private int[] posIndexes;
 	private float[,] pos;
 
+	private string levelPurpose;
 	public Text purposeText;
 	public Text scoreText;
 	public Text recText;
@@ -39,9 +39,9 @@ public class LevelCanvas_1 : MonoBehaviour
 		
 		InvokeRepeating("RunTimer", 1, 1);
 
-		GetShapeType(); //выбирает тип фигуры для игры (круг квадрат или цветок)
-		UpdateArrayOfImages(); //выбирает один из 3-х спрайтов как основной(перемещает его на 0 позицию)
-		ShuffleCoords(); //перемешивает координаты расстановки фигур (фигуры заданы 0-1-2=спрайты)
+		GetShapeType(); 
+		UpdateArrayOfImages(); 
+		ShuffleCoords(); 
 
 		for(int i=0; i<posIndexes.Length; i++)
 		{
@@ -49,7 +49,6 @@ public class LevelCanvas_1 : MonoBehaviour
             cloneShape.SetShape(images[posIndexes[i]]);
             cloneShape.transform.SetParent(levelObject.transform, false);
             cloneShape.transform.position = new Vector3(pos[i,0], pos[i,1], 0);
-            //cloneShape.transform.localScale = new Vector3(40, 40, 0);
 			if (isChangeAngle)
 			{
 				cloneShape.transform.Rotate(0, 0, getAngle());
@@ -71,24 +70,6 @@ public class LevelCanvas_1 : MonoBehaviour
 		}
 	}
 	
-	void RunTimer() 
-	{
-		gameController.UpdateTimer();
-		timerText.text = gameController.GetTimeLimit().ToString();
-		if (gameController.GetTimeLimit()<=15 && gameController.GetTimeLimit()>3)
-         	timerPanel.color = UnityEngine.Color.yellow;
-		else if (gameController.GetTimeLimit()<=3) 
-		    timerPanel.color = UnityEngine.Color.red;
-	}
-
-	void Update()
-	{
-		scoreText.text = gameController.GetGameScore().ToString();
-		recText.text = gameController.GetRecord().ToString();
-		levelTitle.text = "#"+gameController.GetLevel();
-		livesText.text = gameController.GetLives().ToString();
-	}
-
 	public void GetShapeType()
 	{
 		shapeType = Random.Range(0, 3);	
@@ -124,6 +105,25 @@ public class LevelCanvas_1 : MonoBehaviour
 		images[shapeType] = subShape;	
 	}
 
+	void RunTimer() 
+	{
+		gameController.UpdateTimer();
+		timerText.text = gameController.GetTimeLimit().ToString();
+		if (gameController.GetTimeLimit()<=15 && gameController.GetTimeLimit()>3)
+         	timerPanel.color = UnityEngine.Color.yellow;
+		else if (gameController.GetTimeLimit()<=3) 
+		    timerPanel.color = UnityEngine.Color.red;
+	}
+
+	void Update()
+	{
+		scoreText.text = gameController.GetGameScore().ToString();
+		recText.text = gameController.GetRecord().ToString();
+		levelTitle.text = "#"+gameController.GetLevel();
+		livesText.text = gameController.GetLives().ToString();
+	}
+
+
 	public Color GetColor()
 	{
 		int colorType = Random.Range(0, 2);	
@@ -142,4 +142,5 @@ public class LevelCanvas_1 : MonoBehaviour
 		int r = Random.Range(0, rotateAngles.Length);
 		return rotateAngles[r];
 	}
+
 }
