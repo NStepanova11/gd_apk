@@ -65,7 +65,7 @@ public class GameController : MonoBehaviour
     public void ExitButton()
     {
         SaveGameStatus();
-        SaveRecord();
+        //SaveRecord();
         Application.Quit();
     }
 
@@ -85,7 +85,7 @@ public class GameController : MonoBehaviour
         else
             {
                 int lastScore = gameScore; 
-                SetDefaultGameValues();   
+                //SetDefaultGameValues();   
                 SceneManager.LoadScene("CongratScene");
             }
     }
@@ -374,7 +374,7 @@ public class GameController : MonoBehaviour
     public void ReadRecord()
     {
         if(PlayerPrefs.HasKey("recordScore"))
-            PlayerPrefs.GetInt("recordScore");
+            recordScore = PlayerPrefs.GetInt("recordScore");
     }
 
     public void SaveGameStatus()
@@ -382,7 +382,7 @@ public class GameController : MonoBehaviour
         PlayerPrefs.SetInt("gameScore", gameScore);
         PlayerPrefs.SetInt("livesScore", livesScore);
         PlayerPrefs.SetInt("currentSceneNumber", currentSceneNumber);
-        SaveRecord();
+        //SaveRecord();
     }
 
     public void PlaySavedGame()
@@ -393,6 +393,9 @@ public class GameController : MonoBehaviour
             livesScore = PlayerPrefs.GetInt("livesScore");
             currentSceneNumber = PlayerPrefs.GetInt("currentSceneNumber");
        } 
-        LoadCurrentLevelScene();
+       
+       if (currentSceneNumber>=sceneCount)
+            SetDefaultGameValues();
+       LoadCurrentLevelScene();
     }
 }

@@ -129,11 +129,11 @@ public class LevelCanvas_1 : MonoBehaviour
 		int colorType = Random.Range(0, 2);	
 		if (colorType==1)
 		{
-			return( new Color(1f, 0.4f, 0f, 1f));
+			return( new Color(0.3f, 0.9f, 1f, 1f));
 		}
 		else
 		{
-			return( new Color(1f, 0f, 0.7f, 1));
+			return( new Color(1f, 0.7f, 0.2f, 1));
 		}
 	}
 

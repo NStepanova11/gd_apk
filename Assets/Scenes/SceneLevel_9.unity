@@ -1733,7 +1733,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shape: {fileID: 4112247099529122278, guid: 8c2864838fff3ca4ba3bcf2e01dc8071, type: 3}
   shapeType_1:
-  - {fileID: -5756247691205529543, guid: ca807c3582aad1045b954f618958e89c, type: 3}
+  - {fileID: 4233972393983588506, guid: ca807c3582aad1045b954f618958e89c, type: 3}
   - {fileID: -2636318150472022270, guid: ca807c3582aad1045b954f618958e89c, type: 3}
   - {fileID: 6160729570032305075, guid: ca807c3582aad1045b954f618958e89c, type: 3}
   - {fileID: 1253033578092848150, guid: ca807c3582aad1045b954f618958e89c, type: 3}
@@ -1743,10 +1743,10 @@ MonoBehaviour:
   - {fileID: -1858036204717282915, guid: 7f28660b8bf09c342850a672259aad3f, type: 3}
   - {fileID: 743034960099402497, guid: 7f28660b8bf09c342850a672259aad3f, type: 3}
   shapeType_3:
-  - {fileID: 9176829404843801951, guid: 7f28660b8bf09c342850a672259aad3f, type: 3}
-  - {fileID: 3644371013470171854, guid: 7f28660b8bf09c342850a672259aad3f, type: 3}
-  - {fileID: -3041395729272884123, guid: 7f28660b8bf09c342850a672259aad3f, type: 3}
-  - {fileID: -5847561767337057963, guid: 7f28660b8bf09c342850a672259aad3f, type: 3}
+  - {fileID: 6444924077466738375, guid: 7f28660b8bf09c342850a672259aad3f, type: 3}
+  - {fileID: 1751846550405899079, guid: 7f28660b8bf09c342850a672259aad3f, type: 3}
+  - {fileID: -7201079338698525413, guid: ca807c3582aad1045b954f618958e89c, type: 3}
+  - {fileID: -5080215552869305884, guid: ca807c3582aad1045b954f618958e89c, type: 3}
   gameController: {fileID: 1973492341}
   levelObject: {fileID: 2008141600}
   purposeText: {fileID: 1434395803}
