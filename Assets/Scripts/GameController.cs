@@ -16,7 +16,6 @@ public class GameController : MonoBehaviour
     private static int livesScore = 3; 
 	private int timeLimit=31; 
     private static int timeBall;
-
     private List<string> notLevelScenes = new List<string>{
         "MainMenuScene",
         "WinScene",
@@ -25,6 +24,7 @@ public class GameController : MonoBehaviour
         "GameOverScene",
         "CongratScene"
     };
+    
     void Start()
     {
         InitSceneNames();

@@ -75,4 +75,5 @@ public class Shape : MonoBehaviour
         goodShapes = GameObject.FindGameObjectsWithTag("MainShape");
         badShapes = GameObject.FindGameObjectsWithTag("SubShape");
     }
+    
 }

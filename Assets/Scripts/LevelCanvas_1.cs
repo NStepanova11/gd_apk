@@ -70,6 +70,7 @@ public class LevelCanvas_1 : MonoBehaviour
 		}
 	}
 	
+
 	public void GetShapeType()
 	{
 		shapeType = Random.Range(0, 3);	
