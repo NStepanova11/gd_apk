@@ -12,14 +12,10 @@ public class GameController : MonoBehaviour
     private static int sceneCount;
     private static int currentSceneNumber=0;
     private static int gameScore = 0; 
-    private static int recordScore = 0; 
+    private static int recordScore = 1000; 
     private static int livesScore = 3; 
 	private int timeLimit=31; 
     private static int timeBall;
-    private string recordFileName = "record.txt";
-    private string gameStatusFile = "gameStatus.txt";
-
-    private static int startRecord=0;
 
     private List<string> notLevelScenes = new List<string>{
         "MainMenuScene",
@@ -33,7 +29,6 @@ public class GameController : MonoBehaviour
     {
         InitSceneNames();
         ReadRecord(); 
-        startRecord = recordScore; 
     }
 
    
@@ -65,19 +60,15 @@ public class GameController : MonoBehaviour
     public void ExitButton()
     {
         SaveGameStatus();
-        //SaveRecord();
         Application.Quit();
     }
 
     public void PlayNewGame()
     {
         SetDefaultGameValues(); 
-        ReadRecord();
         LoadCurrentLevelScene();
     }
 
-
-    
     public void LoadCurrentLevelScene()
     {
         if (currentSceneNumber<sceneCount)
@@ -85,7 +76,6 @@ public class GameController : MonoBehaviour
         else
             {
                 int lastScore = gameScore; 
-                //SetDefaultGameValues();   
                 SceneManager.LoadScene("CongratScene");
             }
     }
@@ -328,28 +318,9 @@ public class GameController : MonoBehaviour
         return gameScore;
     }
 
-    public void UpdateRecord()
-    {
-        if (gameScore>recordScore);
-        {
-            recordScore = gameScore;
-        }
-
-        if (recordScore>startRecord)
-        {
-            startRecord=recordScore;
-            SaveRecord(); 
-        }
-    }
-
-     public int GetLives()
+    public int GetLives()
     {
         return livesScore;
-    }
-
-    public int GetRecord()
-    {
-        return recordScore;
     }
 
     private string purpose;
@@ -366,23 +337,11 @@ public class GameController : MonoBehaviour
         return "Найти 1 из "+shapeCount+" фигур одного размера";
     }
 
-    public void SaveRecord()
-    {
-        PlayerPrefs.SetInt("recordScore", recordScore);
-    }
-
-    public void ReadRecord()
-    {
-        if(PlayerPrefs.HasKey("recordScore"))
-            recordScore = PlayerPrefs.GetInt("recordScore");
-    }
-
     public void SaveGameStatus()
     {
         PlayerPrefs.SetInt("gameScore", gameScore);
         PlayerPrefs.SetInt("livesScore", livesScore);
         PlayerPrefs.SetInt("currentSceneNumber", currentSceneNumber);
-        //SaveRecord();
     }
 
     public void PlaySavedGame()
@@ -397,5 +356,30 @@ public class GameController : MonoBehaviour
        if (currentSceneNumber>=sceneCount)
             SetDefaultGameValues();
        LoadCurrentLevelScene();
+    }
+
+    public int GetRecord()
+    {
+        return recordScore;
+    }
+
+    public void UpdateRecord()
+    {
+        if (gameScore>recordScore)
+        {
+            recordScore = gameScore;
+            SaveRecord();
+        }
+    }
+
+    public void SaveRecord()
+    {
+        PlayerPrefs.SetInt("recordScore", recordScore);
+    }
+
+    public void ReadRecord()
+    {
+        if(PlayerPrefs.HasKey("recordScore"))
+            recordScore = PlayerPrefs.GetInt("recordScore");
     }
 }
