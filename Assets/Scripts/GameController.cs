@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour
     private static int livesScore = 3; 
 	private int timeLimit=31; 
     private static int timeBall;
+    private bool gameWasOver = false;
     private List<string> notLevelScenes = new List<string>{
         "MainMenuScene",
         "WinScene",
@@ -29,6 +30,12 @@ public class GameController : MonoBehaviour
     {
         InitSceneNames();
         ReadRecord(); 
+
+        if (gameWasOver)
+        {
+            SetDefaultGameValues();
+            gameWasOver = false;
+        }
     }
 
    
@@ -97,7 +104,8 @@ public class GameController : MonoBehaviour
     public void LoadGameOverScene()
     {
         int lastScore = gameScore; 
-        SetDefaultGameValues(); 
+        //SetDefaultGameValues(); 
+        gameWasOver=true;
         SaveGameStatus(); 
         SceneManager.LoadScene("GameOverscene");
     }
@@ -309,7 +317,7 @@ public class GameController : MonoBehaviour
     {
         gameScore+=100;
         gameScore+=timeBall;
-        if (timeBall>25)
+        if (timeBall>27)
             livesScore++;
     }
 
