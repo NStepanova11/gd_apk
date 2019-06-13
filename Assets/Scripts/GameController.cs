@@ -16,7 +16,7 @@ public class GameController : MonoBehaviour
     private static int livesScore = 3; 
 	private int timeLimit=31; 
     private static int timeBall;
-    private bool gameWasOver = false;
+    private static bool gameWasOver = false;
     private List<string> notLevelScenes = new List<string>{
         "MainMenuScene",
         "WinScene",
@@ -347,9 +347,18 @@ public class GameController : MonoBehaviour
 
     public void SaveGameStatus()
     {
-        PlayerPrefs.SetInt("gameScore", gameScore);
-        PlayerPrefs.SetInt("livesScore", livesScore);
-        PlayerPrefs.SetInt("currentSceneNumber", currentSceneNumber);
+        if (gameWasOver)
+        {
+            PlayerPrefs.SetInt("gameScore", 0);
+            PlayerPrefs.SetInt("livesScore", 3);
+            PlayerPrefs.SetInt("currentSceneNumber", 0);
+        }  
+        else 
+        {
+            PlayerPrefs.SetInt("gameScore", gameScore);
+            PlayerPrefs.SetInt("livesScore", livesScore);
+            PlayerPrefs.SetInt("currentSceneNumber", currentSceneNumber);
+        }
     }
 
     public void PlaySavedGame()

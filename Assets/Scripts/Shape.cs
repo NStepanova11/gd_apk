@@ -14,16 +14,31 @@ public class Shape : MonoBehaviour
     {
         renderrer = GetComponent<SpriteRenderer>();
         renderrer.material.color = Color.yellow;
+        Deactivate();
         if (renderrer.tag=="MainShape")
         {
             
             Invoke("ColorGoodShapes", 1);
-            Invoke("GoToWinScene", 1.5f);
+            Invoke("GoToWinScene", 1.7f);
         }
         else
         {
             Invoke("ColorAllShapes", 1);
-            Invoke("GoToLoseScene", 1.5f);
+            Invoke("GoToLoseScene", 1.7f);
+
+        }
+    }
+
+    public void Deactivate()
+    {
+        for (int i = 0; i < goodShapes.Length; i++)
+        {
+            goodShapes[i].GetComponent<CircleCollider2D>().enabled = false;
+        }
+
+        for (int j = 0; j < badShapes.Length; j++)
+        {
+            badShapes[j].GetComponent<CircleCollider2D>().enabled = false;
         }
     }
 
